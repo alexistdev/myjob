@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Myjob</string>
+    <!-- SPLASH 1 -->
+    <string name="splash1">CARI KERJA</string>
+    <string name="splash2">Platform pencarian kerja terpopuler di Indonesia untuk para freelancer</string>
 </resources>
