@@ -17,8 +17,21 @@
     <!-- HomeFreelancer -->
     <string name="homefree1">Gambar</string>
     <string name="homefree2">Dapatkan pekerjaan anda hari ini</string>
+    <string name="homefree3">JOBS</string>
+    <string name="homefree4">Desain Logo</string>
+    <string name="homefree5">Dibutuhkan freelancer yang menguasai adobe XD untuk membuat logo perusahaan Tebu Nasional</string>
+    <string name="homefree6">Fee : Rp.5.000.000</string>
+    <string name="homefree7">End : 25&#8211;08&#8211;2022</string>
 
-
+    <!-- DetailFreelancer -->
+    <string name="detailfree1">Design Logo</string>
+    <string name="detailfree2">Deadline : 25&#8211;08&#8211;2022</string>
+    <string name="detailfree3">Fee: Rp. 5000.000</string>
+    <string name="detailfree4">Deskripsi Pekerjaan</string>
+    <string name="detailfree5">Membutuhkan seorang Freelancer yang menguasai program adobe x dan adobe illustrator untuk mendesain sebuah logo gambar perusahaan kami yang bergerak di bidang pengolahan hasil budidaya Tebu.</string>
+    <string name="detailfree6">Tag:</string>
+    <string name="detailfree7">#logo #design #graphic</string>
+    <string name="detailfree8">Applied</string>
 
     <string-array name="freelance">
         <item>Job Seeker</item>

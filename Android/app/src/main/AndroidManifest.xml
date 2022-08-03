@@ -18,6 +18,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Detailjobfreelancer"
+            android:parentActivityName=".DashboardFreelancer"
+            android:exported="false" />
+        <activity
             android:name=".Daftar"
             android:exported="false" />
         <activity
