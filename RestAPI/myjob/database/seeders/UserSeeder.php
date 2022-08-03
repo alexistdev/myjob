@@ -18,9 +18,9 @@ class UserSeeder extends Seeder
     {
         $date = Carbon::now()->format('Y-m-d H:i:s');
         $user = [
-            array('role_id' => '1', 'name'=>'admin', 'email' => 'admin@gmail.com','password' => Hash::make('1234'),'status' => 1,'created_at' => $date,'updated_at' => $date),
-            array('role_id' => '2',  'name'=>'freelancer','email' => 'freelancer@gmail.com','password' => Hash::make('1234'),'status' => 1,'created_at' => $date,'updated_at' => $date),
-            array('role_id' => '3',  'name'=>'seeker','email' => 'seeker@gmail.com','password' => Hash::make('1234'),'status' => 1,'created_at' => $date,'updated_at' => $date),
+            array('role_id' => '1', 'name'=>'admin', 'email' => 'admin@gmail.com','token' => '1234556323123','password' => Hash::make('1234'),'status' => 1,'created_at' => $date,'updated_at' => $date),
+            array('role_id' => '2',  'name'=>'freelancer','email' => 'freelancer@gmail.com','token' => '12345562','password' => Hash::make('1234'),'status' => 1,'created_at' => $date,'updated_at' => $date),
+            array('role_id' => '3',  'name'=>'seeker','email' => 'seeker@gmail.com','token' => '1234556','password' => Hash::make('1234'),'status' => 1,'created_at' => $date,'updated_at' => $date),
         ];
         User::insert($user);
     }
