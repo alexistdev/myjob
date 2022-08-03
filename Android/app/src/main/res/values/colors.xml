@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg_login_start">#4458DB</color>
     <color name="bg_login_end">#B444DB</color>
+    <color name="hover_menu">#D1A54D</color>
+    <color name="dashboard_top">#D6B7F3</color>
 </resources>
