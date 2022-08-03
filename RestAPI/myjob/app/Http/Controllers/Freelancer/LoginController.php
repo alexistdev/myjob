@@ -47,7 +47,6 @@ class LoginController extends Controller
                             'token' => $dataUser->token,
                             'role' => Auth::user()->role_id,
                         ], 200);
-
                 }
             } else {
                 return response()->json([

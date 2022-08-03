@@ -25,7 +25,7 @@
             android:name=".Daftar"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".DashboardFreelancer"
             android:exported="false" />
         <activity
             android:name=".Splash2Activity"
@@ -37,7 +37,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".DashboardFreelancer"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
