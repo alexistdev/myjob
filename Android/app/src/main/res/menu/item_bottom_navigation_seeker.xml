@@ -3,9 +3,9 @@
     <item android:title="@string/bmenu1"
         android:id="@+id/home_menu"
         android:icon="@drawable/ic_baseline_home_24"/>
-    <item android:title="@string/bmenu4"
-        android:id="@+id/riwayat_menu"
-        android:icon="@drawable/ic_baseline_help_24"/>
+    <item android:title="@string/bmenu2"
+        android:id="@+id/chat"
+        android:icon="@drawable/ic_baseline_chat_24"/>
     <item android:title="@string/bmenu3"
         android:id="@+id/akun_menu"
         android:icon="@drawable/ic_baseline_person_24"/>

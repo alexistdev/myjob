@@ -96,6 +96,7 @@ public class Login extends AppCompatActivity {
                             if (SessionHandle.login(Login.this, response.body().getIdUser(), response.body().getToken(),response.body().getRole())){
                                 if(response.body().getRole().equals("2")){
                                     Intent intent = new Intent(Login.this, DashboardFreelancer.class);
+                                    pesan(response.body().getIdUser());
                                     startActivity(intent);
                                     finish();
                                 } else{

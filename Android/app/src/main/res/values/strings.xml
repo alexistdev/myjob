@@ -33,6 +33,17 @@
     <string name="detailfree7">#logo #design #graphic</string>
     <string name="detailfree8">Applied</string>
 
+
+    <!-- SingleJob -->
+    <string name="singlejob1">Fee : Rp %1$s</string>
+    <string name="singlejob2">Deadline : %1$s</string>
+
+    <!-- Bottom menu -->
+    <string name="bmenu1">Home</string>
+    <string name="bmenu2">Chat</string>
+    <string name="bmenu3">Akun</string>
+    <string name="bmenu4">Help</string>
+
     <string-array name="freelance">
         <item>Job Seeker</item>
         <item>Business Owner</item>

@@ -3,7 +3,7 @@ package com.coder.myjob.model;
 import com.google.gson.annotations.SerializedName;
 
 public class LoginModel {
-    @SerializedName("id_user")
+    @SerializedName("user_id")
     private final String idUser;
     @SerializedName("token")
     private final String token;

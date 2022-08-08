@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Validator;
 
 class JobController extends Controller
 {
+    /** route:api.freelancer.job */
     public function getJob(Request $request)
     {
         $rules = [
-            'user_id' => 'required|numeric',
-            'token' => 'required|max:255',
+            'user_id' => 'required',
+            'token' => 'required',
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
@@ -32,7 +33,7 @@ class JobController extends Controller
                     ->get();
                 return response()->json(array(
                     'status' => true,
-                    'message' => 'Data diary berhasil didapatkan',
+                    'message' => 'Data berhasil didapatkan',
                     'result' => $data,
                 ),200);
             } else {
@@ -41,6 +42,31 @@ class JobController extends Controller
                     'message' => "user tidak ditemukan",
                 ], 404);
             }
+        }
+    }
+
+
+    /** route: */
+    public function myJob(Request $request)
+    {
+        $rules = [
+            'user_id' => 'required',
+            'token' => 'required',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => "data tidak lengkap",
+            ], 404);
+        } else {
+            $user = User::where('id',$request->user_id)->where('token',$request->token)->first();
+            $job = Job::where('user_id',$user->id)->get();
+            return response()->json(array(
+                'status' => true,
+                'message' => 'Data berhasil didapatkan',
+                'result' => $job,
+            ),200);
         }
     }
 }

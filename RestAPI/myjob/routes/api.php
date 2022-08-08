@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/login', [LoginFree::class, 'login'])->name('api.login');
 Route::get('/freelancer/job', [JobFree::class, 'getJob'])->name('api.freelancer.job');
+Route::get('/seeker/job', [JobFree::class, 'myJob'])->name('api.seeker.job');

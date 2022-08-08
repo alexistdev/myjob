@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c83979ca-8b6b-4c0b-bb14-ce6a5b1c06fc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/myjob.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/myjob.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Android/app/debug/output-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/API/APIService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/API/APIService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/Detailjobfreelancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/Detailjobfreelancer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/adapter/JobAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/adapter/JobAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/config/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/config/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/fragment1/Akunfrelancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/fragment1/Akunfrelancer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/fragment1/Homefrelancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/fragment1/Homefrelancer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/model/JobModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/model/JobModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/model/LoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/model/LoginModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/response/GetJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/java/com/coder/myjob/response/GetJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_detailjobfreelancer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/res/layout/activity_detailjobfreelancer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/layout/fragment_akunfrelancer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/res/layout/fragment_akunfrelancer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/layout/fragment_helpfrelancer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/res/layout/fragment_helpfrelancer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android/app/src/main/res/layout/single_job_freelancer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/app/src/main/res/layout/single_job_freelancer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RestAPI/myjob/app/Http/Controllers/Freelancer/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/RestAPI/myjob/app/Http/Controllers/Freelancer/JobController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +61,7 @@
       <workItem from="1657251649552" duration="1074000" />
       <workItem from="1657253205901" duration="778000" />
       <workItem from="1657275372398" duration="669000" />
+      <workItem from="1659625410478" duration="9000" />
     </task>
     <servers />
   </component>

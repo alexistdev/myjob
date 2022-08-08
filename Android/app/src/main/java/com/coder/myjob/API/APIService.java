@@ -5,6 +5,7 @@ import android.content.Context;
 import com.coder.myjob.BuildConfig;
 import com.coder.myjob.config.Constants;
 import com.coder.myjob.model.LoginModel;
+import com.coder.myjob.response.GetJob;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,9 +16,15 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface APIService {
+
+    @GET("api/freelancer/job")
+    Call<GetJob> dapatfreelancerjob(@Query("user_id") String idUser,
+                                @Query("token") String token);
 
     //API untuk login
     @FormUrlEncoded
