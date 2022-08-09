@@ -30,7 +30,7 @@ public class Splash2Activity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             } else if(Objects.equals(role, "3")){
-                Intent intent = new Intent(Splash2Activity.this, DashboardFreelancer.class);
+                Intent intent = new Intent(Splash2Activity.this, DashboardSeeker.class);
                 startActivity(intent);
                 finish();
             } else {

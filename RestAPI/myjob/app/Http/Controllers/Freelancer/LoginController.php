@@ -30,24 +30,26 @@ class LoginController extends Controller
             ];
             Auth::attempt($data);
             if (Auth::check()) {
-                if(!in_array(Auth::user()->role_id,["2","3"])){
+                $user = User::where('id',Auth::user()->id)->where('token',Auth::user()->token)->first();
+                if($user !== null){
+                    User::where('id',Auth::user()->id)->update([
+                        'token' => Str::random(32),
+                    ]);
+                    $dataUser = User::where('id',Auth::user()->id)->first();
+                    return response()->json([
+                        'status' => true,
+                        'message' => "Berhasil",
+                        'user_id' => Auth::user()->id,
+                        'token' => $dataUser->token,
+                        'role' => Auth::user()->role_id,
+                    ], 200);
+                } else {
                     return response()->json([
                         'status' => false,
-                        'message' => "Administrator tidak ditemukan",
-                    ], 401);
-                } else {
-                        User::where('id',Auth::user()->id)->update([
-                            'token' => Str::random(32),
-                        ]);
-                        $dataUser = User::where('id',Auth::user()->id)->first();
-                        return response()->json([
-                            'status' => true,
-                            'message' => "Berhasil",
-                            'user_id' => Auth::user()->id,
-                            'token' => $dataUser->token,
-                            'role' => Auth::user()->role_id,
-                        ], 200);
+                        'message' => "User tidak ditemukan!",
+                    ], 404);
                 }
+
             } else {
                 return response()->json([
                     'status' => false,

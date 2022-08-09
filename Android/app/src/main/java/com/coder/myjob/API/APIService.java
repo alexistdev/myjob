@@ -22,6 +22,10 @@ import retrofit2.http.Query;
 
 public interface APIService {
 
+    @GET("api/seeker/job")
+    Call<GetJob> dapatseekerjob(@Query("user_id") String idUser,
+                                    @Query("token") String token);
+
     @GET("api/freelancer/job")
     Call<GetJob> dapatfreelancerjob(@Query("user_id") String idUser,
                                 @Query("token") String token);
@@ -38,15 +42,16 @@ public interface APIService {
             builder.readTimeout(20, TimeUnit.SECONDS);
             builder.connectTimeout(20, TimeUnit.SECONDS);
             builder.writeTimeout(20, TimeUnit.SECONDS);
-            builder.addInterceptor(new NetworkConnectionInterceptor(mContext));
-            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-            if(BuildConfig.DEBUG){
-                logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-            }else {
-                logging.setLevel(HttpLoggingInterceptor.Level.NONE);
-            }
+//            builder.addInterceptor(new NetworkConnectionInterceptor(mContext));
+//            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+//            if(BuildConfig.DEBUG){
+//                logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+//            }else {
+//                logging.setLevel(HttpLoggingInterceptor.Level.NONE);
+//            }
 
-            OkHttpClient client = builder.addInterceptor(logging).build();
+//            OkHttpClient client = builder.addInterceptor(logging).build();
+            OkHttpClient client = builder.build();
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Constants.URL)
                     .client(client)

@@ -44,6 +44,11 @@
     <string name="bmenu3">Akun</string>
     <string name="bmenu4">Help</string>
 
+    <!-- SEEKER -->
+    <string name="seeker1">MYJOB</string>
+    <string name="seeker2">Cari Freelancer untuk projectmu hari ini!</string>
+
+
     <string-array name="freelance">
         <item>Job Seeker</item>
         <item>Business Owner</item>

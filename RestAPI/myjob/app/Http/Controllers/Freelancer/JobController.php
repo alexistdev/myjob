@@ -61,12 +61,20 @@ class JobController extends Controller
             ], 404);
         } else {
             $user = User::where('id',$request->user_id)->where('token',$request->token)->first();
-            $job = Job::where('user_id',$user->id)->get();
-            return response()->json(array(
-                'status' => true,
-                'message' => 'Data berhasil didapatkan',
-                'result' => $job,
-            ),200);
+            if($user !== null){
+                $job = Job::where('user_id',$user->id)->get();
+                return response()->json(array(
+                    'status' => true,
+                    'message' => 'Data berhasil didapatkan',
+                    'result' => $job,
+                ),200);
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => "User tidak ditemukan",
+                ], 404);
+            }
+
         }
     }
 }

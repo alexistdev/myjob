@@ -65,15 +65,16 @@ public class Homefrelancer extends Fragment {
                 @Override
                 public void onResponse(Call<GetJob> call, Response<GetJob> response) {
                     sembunyikanDialog();
-                    if(response.isSuccessful()){
-                        if(response.body() != null){
+                    if(response.isSuccessful()) {
+                        if (response.body() != null) {
                             daftarJob = response.body().getListJob();
                             jobAdapter.replaceData(daftarJob);
                         }
-                    }else{
-                        APIError error = ErrorUtils.parseError(response);
-                        pesan(error.message());
                     }
+//                    }else{
+//                        APIError error = ErrorUtils.parseError(response);
+//                        pesan(error.message());
+//                    }
                 }
                 @EverythingIsNonNull
                 @Override

@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             } else if (Objects.equals(role, "3")) {
-                Intent intent = new Intent(Login.this, DashboardFreelancer.class);
+                Intent intent = new Intent(Login.this, DashboardSeeker.class);
                 startActivity(intent);
                 finish();
             } else {
@@ -99,8 +99,10 @@ public class Login extends AppCompatActivity {
                                     pesan(response.body().getIdUser());
                                     startActivity(intent);
                                     finish();
+
                                 } else{
-                                    Intent intent = new Intent(Login.this, DashboardFreelancer.class);
+
+                                    Intent intent = new Intent(Login.this, DashboardSeeker.class);
                                     startActivity(intent);
                                     finish();
                                 }
