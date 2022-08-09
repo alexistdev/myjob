@@ -2,6 +2,7 @@ package com.coder.myjob.fragment2;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -17,7 +18,10 @@ import android.widget.Toast;
 
 import com.coder.myjob.API.APIService;
 import com.coder.myjob.API.NoConnectivityException;
+import com.coder.myjob.Daftar;
+import com.coder.myjob.Login;
 import com.coder.myjob.R;
+import com.coder.myjob.TambahJob;
 import com.coder.myjob.adapter.JobAdapter;
 import com.coder.myjob.config.Constants;
 import com.coder.myjob.model.APIError;
@@ -46,7 +50,7 @@ public class Homeseeker extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View mview = inflater.inflate(R.layout.fragment_homeseeker, container, false);
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences(
                 Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
@@ -57,10 +61,10 @@ public class Homeseeker extends Fragment {
         mTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pesan('okay');
+                Intent intent = new Intent(getActivity(), TambahJob.class);
+                startActivity(intent);
             }
         });
-//        pesan("id User ="+ idUser + " token: "+ token);
         setData(mContext,idUser,token);
         return mview;
     }

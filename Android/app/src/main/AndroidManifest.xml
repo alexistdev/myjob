@@ -18,6 +18,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".TambahJob"
+            android:parentActivityName=".DashboardSeeker"
+            android:exported="false" />
+        <activity
             android:name=".DashboardSeeker"
             android:exported="false" />
         <activity
