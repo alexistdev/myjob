@@ -33,15 +33,16 @@
         app:layout_constraintVertical_bias="0.127">
 
         <TextView
+            android:id="@+id/text_judul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12sp"
-
             android:text="@string/detailfree1"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/txt_deadline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12sp"
@@ -50,6 +51,7 @@
             android:text="@string/detailfree2" />
 
         <TextView
+            android:id="@+id/txt_fee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12sp"
@@ -80,6 +82,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/txt_deskripsi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12sp"
@@ -129,10 +132,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="@string/detailfree8"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat3" />
+
+    <Button
+        android:id="@+id/btn_bidder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/detailfree9"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_applied"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

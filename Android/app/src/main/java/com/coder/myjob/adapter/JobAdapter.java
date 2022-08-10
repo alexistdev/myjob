@@ -50,6 +50,11 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.MyJobHolder> {
         holder.mTanggal.setText(deadline);
         holder.itemView.setOnClickListener(v -> {
             Intent mIntent = new Intent(v.getContext(), Detailjobfreelancer.class);
+            mIntent.putExtra("judul", mJobList.get(position).getJudulJob());
+            mIntent.putExtra("deadline", mJobList.get(position).getDeadline());
+            mIntent.putExtra("fee", mJobList.get(position).getFee());
+            mIntent.putExtra("deskripsi", mJobList.get(position).getDeskripsi());
+            mIntent.putExtra("idJob", mJobList.get(position).getIdJob());
             v.getContext().startActivity(mIntent);
         });
     }

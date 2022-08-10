@@ -29,9 +29,10 @@
     <string name="detailfree3">Fee: Rp. 5000.000</string>
     <string name="detailfree4">Deskripsi Pekerjaan</string>
     <string name="detailfree5">Membutuhkan seorang Freelancer yang menguasai program adobe x dan adobe illustrator untuk mendesain sebuah logo gambar perusahaan kami yang bergerak di bidang pengolahan hasil budidaya Tebu.</string>
-    <string name="detailfree6">Tag:</string>
-    <string name="detailfree7">#logo #design #graphic</string>
+    <string name="detailfree6">Bidder:</string>
+    <string name="detailfree7">-</string>
     <string name="detailfree8">Applied</string>
+    <string name="detailfree9">Lihat Bidder</string>
 
 
     <!-- SingleJob -->
