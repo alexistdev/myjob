@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/login', [LoginFree::class, 'login'])->name('api.login');
 Route::get('/freelancer/job', [JobFree::class, 'getJob'])->name('api.freelancer.job');
+Route::post('/freelancer/job', [JobFree::class, 'jobApplied'])->name('api.freelancer.applied');
 Route::get('/seeker/job', [JobFree::class, 'myJob'])->name('api.seeker.job');
 Route::post('/seeker/job', [JobFree::class, 'tambahJob'])->name('api.seeker.savejob');
 Route::get('/kategori', [Spinn::class, 'getKategori'])->name('api.kategori');

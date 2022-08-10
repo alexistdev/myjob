@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Freelancer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bidding;
 use App\Models\Job;
 use App\Models\Kategori;
 use App\Models\User;
@@ -141,5 +142,78 @@ class JobController extends Controller
                 ], 404);
             }
         }
+    }
+
+
+    /** route: */
+    public function jobApplied(Request $request)
+    {
+        $rules = [
+            'user_id' => 'required',
+            'job_id' => 'required',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => "data tidak lengkap",
+            ], 404);
+        } else {
+            $user = User::where('id',$request->user_id)->where('role_id',2)->first();
+            if($user != null){
+                $job = Job::where('id', $request->job_id)->where('status',1)->first();
+                if($job != null){
+                    $bidding = Bidding::where('user_id',$request->user_id)->where('job_id',$request->job_id)->first();
+                    if($bidding != null){
+                        return response()->json([
+                            'status' => false,
+                            'message' => "Anda sudah melakukan bid!",
+                        ], 401);
+                    }else{
+                        DB::beginTransaction();
+                        try{
+                            $bid = new Bidding();
+                            $bid->user_id = $request->user_id;
+                            $bid->job_id = $request->job_id;
+                            $bid->bidder = $this->generateRandomString();
+                            $bid->save();
+                            DB::commit();
+                            return response()->json([
+                                'status' => true,
+                                'message' => "Anda berhasil melakukan bid!",
+                            ], 200);
+                        } catch (Exception $e) {
+                            DB::rollback();
+                            return response()->json([
+                                'status' => false,
+                                'message' => "Error: ".$e->getMessage(),
+                            ], 404);
+                        }
+
+                    }
+                } else{
+                    return response()->json([
+                        'status' => false,
+                        'message' => "JOB tidak ditemukan!",
+                    ], 404);
+                }
+            }else{
+                return response()->json([
+                    'status' => false,
+                    'message' => "User tidak ditemukan!",
+                ], 404);
+            }
+        }
+    }
+
+
+    private function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }

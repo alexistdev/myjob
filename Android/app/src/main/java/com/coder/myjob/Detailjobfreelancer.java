@@ -59,6 +59,12 @@ public class Detailjobfreelancer extends AppCompatActivity {
                 mBidder.setVisibility(View.INVISIBLE);
                 mAplied.setVisibility(View.VISIBLE);
             }
+            mAplied.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    pesan(idJob);
+                }
+            });
         }
     }
 
