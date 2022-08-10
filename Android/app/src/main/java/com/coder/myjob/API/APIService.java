@@ -6,6 +6,7 @@ import com.coder.myjob.BuildConfig;
 import com.coder.myjob.config.Constants;
 import com.coder.myjob.model.JobModel;
 import com.coder.myjob.model.LoginModel;
+import com.coder.myjob.response.GetBidder;
 import com.coder.myjob.response.GetJob;
 import com.coder.myjob.response.ResponseKategori;
 
@@ -24,6 +25,9 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface APIService {
+
+    @GET("api/bidder")
+    Call<GetBidder> dataBidder(@Query("job_id") String jobId);
 
     @GET("api/freelancer/job/cek")
     Call<JobModel> cekStatusJob(@Query("user_id") String idUser,

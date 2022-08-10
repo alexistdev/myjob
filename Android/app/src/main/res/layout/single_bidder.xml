@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5sp"
+    android:layout_marginTop="5sp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_card"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txt_nama"
+            android:layout_marginTop="12sp"
+            android:layout_marginStart="12sp"
+            android:layout_marginEnd="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama : Fajar Nugroho" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/txt_email"
+                android:layout_marginBottom="12sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginStart="12sp"
+                android:layout_marginEnd="12sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Nama : Fajar Nugroho" />
+            <Button
+                android:id="@+id/btn_approve"
+                android:layout_weight="1"
+                android:layout_width="25dp"
+                android:layout_marginEnd="12sp"
+                android:layout_height="wrap_content"
+                android:text="pilih"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

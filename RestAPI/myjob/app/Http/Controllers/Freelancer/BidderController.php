@@ -27,12 +27,16 @@ class BidderController extends Controller
                 $bidder = Bidding::with('user')->where('job_id',$request->job_id)->get();
                 $data = collect();
                 foreach($bidder as $bid){
-                    $data->push($bid->user);
-
+                    $mybid = [];
+                    $mybid['id'] = $bid->id;
+                    $mybid['user_id'] = $bid->user_id;
+                    $mybid['nama'] = $bid->user->name;
+                    $mybid['email'] = $bid->user->email;
+                    $data->push($mybid);
                 }
                 return response()->json([
                     'status' => true,
-                    'message' => "data job tidak ditemukan",
+                    'message' => "berhasil",
                     'result' => $data,
                 ], 200);
 

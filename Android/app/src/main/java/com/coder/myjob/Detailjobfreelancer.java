@@ -69,6 +69,15 @@ public class Detailjobfreelancer extends AppCompatActivity {
                     pesan(idJob);
                 }
             });
+            mBidder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Detailjobfreelancer.this, DaftarBidder.class);
+                    intent.putExtra("idjob", idJob);
+                    startActivity(intent);
+                    finish();
+                }
+            });
         }
     }
 
