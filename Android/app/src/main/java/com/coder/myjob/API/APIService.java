@@ -4,12 +4,15 @@ import android.content.Context;
 
 import com.coder.myjob.BuildConfig;
 import com.coder.myjob.config.Constants;
+import com.coder.myjob.model.JobModel;
 import com.coder.myjob.model.LoginModel;
 import com.coder.myjob.response.GetJob;
+import com.coder.myjob.response.ResponseKategori;
 
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -21,6 +24,19 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface APIService {
+
+    //API tambah job oleh seeker
+    @FormUrlEncoded
+    @POST("api/seeker/job")
+    Call<JobModel> tambahJob(@Field("user_id") String idUser,
+                             @Field("kategori") String kategori,
+                             @Field("judul") String judul,
+                             @Field("deskripsi") String deskripsi,
+                             @Field("fee") String fee,
+                             @Field("deadline") String deadline);
+
+    @GET("api/kategori")
+    Call<ResponseKategori> spinnerKategori();
 
     @GET("api/seeker/job")
     Call<GetJob> dapatseekerjob(@Query("user_id") String idUser,
