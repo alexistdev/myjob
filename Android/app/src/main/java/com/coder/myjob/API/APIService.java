@@ -25,6 +25,10 @@ import retrofit2.http.Query;
 
 public interface APIService {
 
+    @GET("api/freelancer/job/cek")
+    Call<JobModel> cekStatusJob(@Query("user_id") String idUser,
+                                @Query("job_id") String jobId);
+
     //API tambah job oleh seeker
     @FormUrlEncoded
     @POST("api/seeker/job")

@@ -216,4 +216,49 @@ class JobController extends Controller
         }
         return $randomString;
     }
+
+    public function cekStatusJobFreelancer(Request $request){
+        $rules = [
+            'user_id' => 'required',
+            'job_id' => 'required',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => "data tidak lengkap",
+            ], 404);
+        } else {
+            $user = User::where('id',$request->user_id)->where('role_id',2)->first();
+            if($user != null){
+                $job = Job::where('id', $request->job_id)->first();
+                if($job != null){
+                    $bidding = Bidding::where('user_id',$request->user_id)->where('job_id',$request->job_id)->first();
+                    if($bidding != null){
+                        return response()->json([
+                            'status' => true,
+                            'message' => "Sudah Bid!",
+                            'status_bid' => "1",
+                        ], 200);
+                    } else {
+                        return response()->json([
+                            'status' => true,
+                            'message' => "Belum bid!",
+                            'status_bid' => "0",
+                        ], 200);
+                    }
+                } else {
+                    return response()->json([
+                        'status' => false,
+                        'message' => "Job tidak ditemukan!",
+                    ], 404);
+                }
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => "User tidak ditemukan!",
+                ], 404);
+            }
+        }
+    }
 }

@@ -6,6 +6,9 @@ public class JobModel {
     @SerializedName("id")
     private final String idJob;
 
+    @SerializedName("status_bid")
+    private final String statusBid;
+
     @SerializedName("name")
     private final String judulJob;
 
@@ -24,8 +27,9 @@ public class JobModel {
     @SerializedName("status")
     private final String status;
 
-    public JobModel(String idJob, String judulJob, String deskripsi, String fee, String deadline, String bidder, String status) {
+    public JobModel(String idJob, String statusBid, String judulJob, String deskripsi, String fee, String deadline, String bidder, String status) {
         this.idJob = idJob;
+        this.statusBid = statusBid;
         this.judulJob = judulJob;
         this.deskripsi = deskripsi;
         this.fee = fee;
@@ -36,6 +40,10 @@ public class JobModel {
 
     public String getIdJob() {
         return idJob;
+    }
+
+    public String getStatusBid() {
+        return statusBid;
     }
 
     public String getJudulJob() {
