@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DashboardController as DashAdmin;
+use App\Http\Controllers\Admin\{DashboardController as DashAdmin, UserController as UserAdmin};
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\DashboardController as DashAdmin;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::redirect('/', '/login');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,6 +25,7 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['web','auth','roles']],function() {
     Route::group(['roles' => 'admin'], function () {
         Route::get('/admin/dashboard', [DashAdmin::class, 'index'])->name('adm.dashboard');
+        Route::get('/admin/users', [UserAdmin::class, 'index'])->name('adm.users');
     });
 });
 

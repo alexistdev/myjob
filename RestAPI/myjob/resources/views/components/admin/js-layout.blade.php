@@ -13,4 +13,7 @@
     <script src="{{asset('rocker/assets/js/index.js')}}"></script>
     <!--app JS-->
     <script src="{{asset('rocker/assets/js/app.js')}}"></script>
+    <!--Datatable-->
+    <script src="{{asset('rocker/assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
+    <script src="{{asset('rocker/assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 </div>

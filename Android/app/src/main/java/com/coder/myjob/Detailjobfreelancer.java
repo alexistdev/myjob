@@ -26,7 +26,7 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class Detailjobfreelancer extends AppCompatActivity {
     private Button mAplied,mBidder;
-    private TextView mJudul,mDeadline,mFee,mDeskripsi;
+    private TextView mJudul,mDeadline,mFee,mDeskripsi,mNamaBidder;
     private ProgressDialog pDialog;
 
     @Override
@@ -49,7 +49,8 @@ public class Detailjobfreelancer extends AppCompatActivity {
             String deadline = extra.getString("deadline","");
             String fee = extra.getString("fee","");
             String deskripsi = extra.getString("deskripsi","");
-
+            String bidder = extra.getString("bidder","");
+            mNamaBidder.setText(bidder);
             mJudul.setText(judul);
             mDeskripsi.setText(deskripsi);
             mDeadline.setText(getString(R.string.singlejob2,deadline));
@@ -58,7 +59,11 @@ public class Detailjobfreelancer extends AppCompatActivity {
                     Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
             String role = sharedPreferences.getString("role", "");
             if(role.equals("3")){
-                mBidder.setVisibility(View.VISIBLE);
+                if(bidder.equals("-")){
+                    mBidder.setVisibility(View.VISIBLE);
+                }else{
+                    mBidder.setVisibility(View.INVISIBLE);
+                }
                 mAplied.setVisibility(View.INVISIBLE);
             }else{
                 cekJob(idJob);
@@ -131,6 +136,7 @@ public class Detailjobfreelancer extends AppCompatActivity {
         mFee = findViewById(R.id.txt_fee);
         mDeskripsi = findViewById(R.id.txt_deskripsi);
         mBidder = findViewById(R.id.btn_bidder);
+        mNamaBidder = findViewById(R.id.text_bidder);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         pDialog.setMessage("Loading.....");

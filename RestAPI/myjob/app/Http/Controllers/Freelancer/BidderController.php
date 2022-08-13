@@ -48,4 +48,35 @@ class BidderController extends Controller
             }
         }
     }
+
+    public function approve(Request $request){
+        $rules = [
+            'bidder_id' => 'required',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => "data tidak lengkap",
+            ], 404);
+        } else {
+            $bidder = Bidding::where('id',$request->bidder_id)->first();
+            if($bidder != null){
+                Job::where('id',$bidder->job_id)->update([
+                   'status' => 2,
+                   'bidder' => $bidder->bidder,
+                ]);
+                return response()->json([
+                    'status' => true,
+                    'message' => "job sudah diapprove",
+                ], 200);
+            }else{
+                return response()->json([
+                    'status' => false,
+                    'message' => "data tidak ada",
+                ], 404);
+            }
+        }
+
+    }
 }

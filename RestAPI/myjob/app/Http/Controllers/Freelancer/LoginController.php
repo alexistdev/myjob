@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Freelancer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Skillpengguna;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -56,6 +58,45 @@ class LoginController extends Controller
                     'message' => "Username atau email salah!",
                 ], 401);
             }
+        }
+    }
+
+
+    public function daftar(Request $request)
+    {
+        $rules = [
+            'email' => 'required|email|unique:users,email|max:255',
+            'name' => 'required|max:255',
+            'password' => 'required|max:255',
+            'tipe' => 'required|numeric',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => "data tidak lengkap",
+            ], 404);
+        } else {
+            $user = new User();
+            $user->role_id = $request->tipe;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->status= 1;
+            $user->save();
+            $idUser = $user->id;
+            if($request->tipe == 2){
+                $skill = new Skillpengguna();
+                $skill->user_id = $idUser;
+                $skill->kategori_id = 1;
+                $skill->save();
+            }
+
+
+            return response()->json([
+                'status' => true,
+                'message' => "berhasil",
+            ], 200);
         }
     }
 }

@@ -26,4 +26,9 @@ class Job extends Model
             get: fn ($value) => number_format($value,0,".","."),
         );
     }
+
+    public function bidding()
+    {
+        return $this->hasOne(Bidding::class,'bidder','bidder')->with('user');
+    }
 }

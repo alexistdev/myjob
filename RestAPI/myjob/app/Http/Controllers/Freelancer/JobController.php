@@ -31,7 +31,7 @@ class JobController extends Controller
             $user = User::with('skill')->where('id',$request->user_id)->where('token',$request->token)->first();
             if($user !== null){
                 $data = Job::where('kategori_id',$user->skill->kategori_id)
-                    ->where('status',1)
+
                     ->orWhere('name','LIKE','%'.$user->skill->tag->tag.'%')
                     ->orWhere('deskripsi','LIKE','%'.$user->skill->tag->tag.'%')
                     ->get();
@@ -66,12 +66,32 @@ class JobController extends Controller
         } else {
             $user = User::where('id',$request->user_id)->where('token',$request->token)->first();
             if($user !== null){
-                $job = Job::where('user_id',$user->id)->get();
-                return response()->json(array(
-                    'status' => true,
-                    'message' => 'Data berhasil didapatkan',
-                    'result' => $job,
-                ),200);
+                $job = Job::with('bidding')->where('user_id',$user->id)->get();
+                if($job->isEmpty()){
+                    return response()->json(array(
+                        'status' => false,
+                        'message' => 'Data kosong',
+                    ),404);
+                } else {
+                    $data = collect();
+
+                    foreach($job as $jb){
+                        $datax['id'] = $jb->id;
+                        $datax['name'] = $jb->name;
+                        $datax['deskripsi'] = $jb->deskripsi;
+                        $datax['fee'] = $jb->fee;
+                        $datax['deadline'] = $jb->deadline;
+                        $datax['bidder'] = ($jb->bidding != null)?$jb->bidding->user->name:null;
+                        $datax['status'] = $jb->status;
+                        $data->push($datax);
+                    }
+                    return response()->json(array(
+                        'status' => true,
+                        'message' => 'Data berhasil didapatkan',
+                        'result' =>$data,
+                    ),200);
+                }
+
             } else {
                 return response()->json([
                     'status' => false,

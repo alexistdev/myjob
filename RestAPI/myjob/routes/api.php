@@ -27,4 +27,7 @@ Route::get('/seeker/job', [JobFree::class, 'myJob'])->name('api.seeker.job');
 Route::post('/seeker/job', [JobFree::class, 'tambahJob'])->name('api.seeker.savejob');
 Route::get('/kategori', [Spinn::class, 'getKategori'])->name('api.kategori');
 Route::get('/bidder', [Bidd::class, 'getDataBidder'])->name('api.bidder');
+Route::post('/bidder', [Bidd::class, 'approve'])->name('api.bidder.approve');
 
+
+Route::post('/daftar', [LoginFree::class, 'daftar'])->name('api.daftar');

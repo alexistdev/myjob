@@ -26,6 +26,15 @@ import retrofit2.http.Query;
 
 public interface APIService {
 
+    //API untuk login
+    @FormUrlEncoded
+    @POST("api/daftar")
+    Call<LoginModel> daftarUser(@Field("email") String email,
+                               @Field("password") String password,
+                                @Field("name") String name,
+                                @Field("tipe") String tipe);
+
+
     @GET("api/bidder")
     Call<GetBidder> dataBidder(@Query("job_id") String jobId);
 

@@ -22,4 +22,6 @@
     <link rel="stylesheet" href="{{asset('rocker/assets/css/dark-theme.css')}}" />
     <link rel="stylesheet" href="{{asset('rocker/assets/css/semi-dark.css')}}" />
     <link rel="stylesheet" href="{{asset('rocker/assets/css/header-colors.css')}}" />
+    <!-- Datatable -->
+    <link rel="stylesheet" href="{{asset('rocker/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" />
 </div>
