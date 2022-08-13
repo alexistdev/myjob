@@ -29,9 +29,7 @@
                 </li>
                 <li> <a href="{{route('adm.kategori')}}"><i class="bx bx-right-arrow-alt"></i>Kategori</a>
                 </li>
-                <li> <a href="ecommerce-add-new-products.html"><i class="bx bx-right-arrow-alt"></i>Add New Products</a>
-                </li>
-                <li> <a href="ecommerce-orders.html"><i class="bx bx-right-arrow-alt"></i>Orders</a>
+                <li> <a href="{{route('adm.job')}}"><i class="bx bx-right-arrow-alt"></i>Data Job</a>
                 </li>
             </ul>
         </li>

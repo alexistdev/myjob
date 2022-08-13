@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{DashboardController as DashAdmin,
     UserController as UserAdmin,
-    KategoriController as KatAdmin};
+    KategoriController as KatAdmin,
+    JobController as JobAdmin};
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::group(['middleware' => ['web','auth','roles']],function() {
         Route::get('/admin/dashboard', [DashAdmin::class, 'index'])->name('adm.dashboard');
         Route::get('/admin/users', [UserAdmin::class, 'index'])->name('adm.users');
         Route::get('/admin/kategori', [KatAdmin::class, 'index'])->name('adm.kategori');
+        Route::get('/admin/jobs', [JobAdmin::class, 'index'])->name('adm.job');
     });
 });
 

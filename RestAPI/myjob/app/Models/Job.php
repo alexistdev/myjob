@@ -31,4 +31,14 @@ class Job extends Model
     {
         return $this->hasOne(Bidding::class,'bidder','bidder')->with('user');
     }
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
