@@ -27,7 +27,7 @@
             <ul>
                 <li> <a href="{{route('adm.users')}}"><i class="bx bx-right-arrow-alt"></i>Users</a>
                 </li>
-                <li> <a href="ecommerce-products-details.html"><i class="bx bx-right-arrow-alt"></i>Product Details</a>
+                <li> <a href="{{route('adm.kategori')}}"><i class="bx bx-right-arrow-alt"></i>Kategori</a>
                 </li>
                 <li> <a href="ecommerce-add-new-products.html"><i class="bx bx-right-arrow-alt"></i>Add New Products</a>
                 </li>

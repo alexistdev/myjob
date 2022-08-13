@@ -7,8 +7,10 @@
                         <div class="d-flex align-items-center">
                             <div>
                                 <h6 class="mb-0">Master Data User</h6>
+
                             </div>
                         </div>
+                        <button class="btn btn-sm btn-primary float-end">TAMBAH</button>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -17,9 +19,8 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center">NO</th>
-                                    <th class="text-center">NAMA PENGGUNA</th>
-                                    <th class="text-center">ROLE</th>
-                                    <th class="text-center">EMAIL</th>
+                                    <th class="text-center">NAMA KATEGORI</th>
+                                    <th class="text-center">TAG</th>
                                     <th class="text-center">DIBUAT</th>
                                     <th class="text-center">ACTION</th>
                                 </tr>
@@ -37,7 +38,7 @@
     <x-admin.js-layout />
     <script>
         $(document).ready(function () {
-            let base_url = "{{route('adm.users')}}";
+            let base_url = "{{route('adm.kategori')}}";
             $('#tabelKu').DataTable({
                 responsive: true,
                 processing: true,
@@ -63,8 +64,7 @@
                         }
                     },
                     {data: 'name', class: 'text-left'},
-                    {data: 'role', class: 'text-left'},
-                    {data: 'email', class: 'text-left'},
+                    {data: 'tag', class: 'text-left'},
                     {data: 'created_at', class: 'text-left'},
                     {data: 'action', class: 'text-center', width: "10%"},
                 ],

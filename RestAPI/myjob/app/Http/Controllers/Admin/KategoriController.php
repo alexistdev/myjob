@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kota;
-use App\Models\Provinsi;
+use App\Models\Kategori;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 
-class UserController extends Controller
+class KategoriController extends Controller
 {
     protected $users;
 
@@ -25,8 +24,8 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $user = User::where('role_id',"!=","1")->get();
-            return DataTables::of($user)
+            $kategori = Kategori::all();
+            return DataTables::of($kategori)
                 ->addIndexColumn()
                 ->editColumn('created_at', function ($request) {
                     return $request->created_at->format('d-m-Y H:i:s');
@@ -40,17 +39,17 @@ class UserController extends Controller
                     return $str;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = "<button class=\"btn btn-primary m-1\">Edit</button>";
-                    $btn = $btn."<button class=\"btn btn-danger m-1\">Hapus</button>";
+                    $btn = "<button class=\"btn btn-sm btn-primary m-1\">Edit</button>";
+                    $btn = $btn."<button class=\"btn btn-sm btn-danger m-1\">Hapus</button>";
                     return $btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.master.user', array(
+        return view('admin.master.kategori', array(
             'judul' => "Dashboard Administrator | MyJob v.1",
             'menuUtama' => 'master',
-            'menuKedua' => 'user',
+            'menuKedua' => 'kategori',
         ));
     }
 }
