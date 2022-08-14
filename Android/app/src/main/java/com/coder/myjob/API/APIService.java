@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.coder.myjob.BuildConfig;
 import com.coder.myjob.config.Constants;
+import com.coder.myjob.model.AkunModel;
 import com.coder.myjob.model.JobModel;
 import com.coder.myjob.model.LoginModel;
 import com.coder.myjob.response.GetBidder;
@@ -31,6 +32,10 @@ public interface APIService {
     @FormUrlEncoded
     @POST("api/freelancer/job")
     Call<JobModel> applyJob(@Field("user_id") String userId,@Field("job_id") String jobId);
+
+    /* dapat info akun*/
+    @GET("api/freelancer/akun")
+    Call<AkunModel> getDataAkun(@Query("user_id") String UserId);
 
 
     //API untuk daftar

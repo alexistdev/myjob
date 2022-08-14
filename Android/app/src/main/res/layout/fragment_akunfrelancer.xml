@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,30 +16,36 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/edx_nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Nama Pengguna"
+            android:autofillHints="name"
             android:layout_marginStart="12sp"
             android:layout_marginEnd="12sp"
-            android:minHeight="48dp"
-            android:text="Fajar Nugroho" />
+            android:minHeight="48dp" />
 
         <EditText
+            android:id="@+id/edx_email"
             android:layout_marginTop="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12sp"
             android:layout_marginEnd="12sp"
             android:minHeight="48dp"
-            android:text="freelancer@gmail.com" />
+            android:autofillHints="emailAddress"
+            android:hint="Email"/>
 
         <EditText
+            android:id="@+id/edx_phone"
             android:layout_marginTop="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12sp"
             android:layout_marginEnd="12sp"
             android:minHeight="48dp"
-            android:text="0812456789" />
+            android:autofillHints="phone"
+            android:hint="Phone"/>
 
         <EditText
             android:layout_marginTop="20sp"
@@ -50,13 +57,35 @@
             android:autofillHints="password"
             android:hint="password"/>
 
-        <Button
-            android:layout_marginTop="30sp"
-            android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logout"
-            android:layout_gravity="center"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_simpan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="92dp"
+                android:text="Simpan"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Logout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.309"
+                app:layout_constraintStart_toEndOf="@+id/btn_simpan"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </LinearLayout>
 
