@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,10 +23,12 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $user = User::where('role_id',"!=","1")->get();
         return view('admin.dashboard',array(
             'judul' => "Dashboard Administrator | MyJob v.1",
             'menuUtama' => 'dashboard',
             'menuKedua' => 'dashboard',
+            'freelancer' => collect($user)->where('role_id',2)->count(),
         ));
     }
 }

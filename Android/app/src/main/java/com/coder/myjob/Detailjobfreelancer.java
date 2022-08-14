@@ -58,6 +58,7 @@ public class Detailjobfreelancer extends AppCompatActivity {
             SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(
                     Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
             String role = sharedPreferences.getString("role", "");
+            String idUser = sharedPreferences.getString("idUser", "");
             if(role.equals("3")){
                 if(bidder.equals("-")){
                     mBidder.setVisibility(View.VISIBLE);
@@ -66,30 +67,49 @@ public class Detailjobfreelancer extends AppCompatActivity {
                 }
                 mAplied.setVisibility(View.INVISIBLE);
             }else{
-                cekJob(idJob);
+                cekJob(idJob,idUser);
             }
-            mAplied.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    pesan(idJob);
-                }
-            });
-            mBidder.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Detailjobfreelancer.this, DaftarBidder.class);
-                    intent.putExtra("idjob", idJob);
-                    startActivity(intent);
-                    finish();
-                }
+            mAplied.setOnClickListener(view -> appliedJob(idJob,idUser));
+            mBidder.setOnClickListener(view -> {
+                Intent intent = new Intent(Detailjobfreelancer.this, DaftarBidder.class);
+                intent.putExtra("idjob", idJob);
+                startActivity(intent);
+                finish();
             });
         }
     }
 
-    private void cekJob(String idJob){
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(
-                Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
-        String idUser = sharedPreferences.getString("idUser", "");
+    private void appliedJob(String idJob, String idUser){
+        tampilkanDialog();
+        try{
+            Call<JobModel> call=APIService.Factory.create(getApplicationContext()).applyJob(idUser,idJob);
+            call.enqueue(new Callback<JobModel>() {
+                @EverythingIsNonNull
+                @Override
+                public void onResponse(Call<JobModel> call, Response<JobModel> response) {
+                    sembunyikanDialog();
+                    if(response.isSuccessful()){
+                        if(response.body() != null){
+                            pesan("Anda telah melakukan penawaran, silahkan ditunggu untuk di validasi oleh Pemilik Pekerjaan!");
+                        }
+                    }
+                }
+                @EverythingIsNonNull
+                @Override
+                public void onFailure(Call<JobModel> call, Throwable t) {
+                    sembunyikanDialog();
+                    pesan(t.getMessage());
+                }
+            });
+        }catch (Exception e){
+            sembunyikanDialog();
+            e.printStackTrace();
+            pesan(e.getMessage());
+        }
+
+    }
+
+    private void cekJob(String idJob,String idUser){
         tampilkanDialog();
         try{
             Call<JobModel> call= APIService.Factory.create(getApplicationContext()).cekStatusJob(idUser,idJob);

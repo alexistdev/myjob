@@ -13,7 +13,7 @@ class BidderController extends Controller
     public function getDataBidder(Request $request)
     {
         $rules = [
-            'job_id' => 'required',
+            'job_id' => 'required|numeric',
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {

@@ -26,7 +26,14 @@ import retrofit2.http.Query;
 
 public interface APIService {
 
-    //API untuk login
+    /** API untuk freelance */
+    /* Aplied Job*/
+    @FormUrlEncoded
+    @POST("api/freelancer/job")
+    Call<JobModel> applyJob(@Field("user_id") String userId,@Field("job_id") String jobId);
+
+
+    //API untuk daftar
     @FormUrlEncoded
     @POST("api/daftar")
     Call<LoginModel> daftarUser(@Field("email") String email,
