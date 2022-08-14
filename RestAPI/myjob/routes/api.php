@@ -22,7 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login', [LoginFree::class, 'login'])->name('api.login');
 
 Route::get('/freelancer/job', [JobFree::class, 'getJob'])->name('api.freelancer.job');
+
+/** untuk akun freelancer */
 Route::get('/freelancer/akun', [Akun::class, 'getAkun'])->name('api.freelancer.akun');
+Route::post('/freelancer/akun', [Akun::class, 'simpanAkun'])->name('api.freelancer.saveakun');
 
 Route::post('/freelancer/job', [JobFree::class, 'jobApplied'])->name('api.freelancer.applied');
 Route::get('/freelancer/job/cek', [JobFree::class, 'cekStatusJobFreelancer'])->name('api.freelancer.cek');

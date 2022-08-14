@@ -69,6 +69,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="92dp"
                 android:text="Simpan"
+                android:backgroundTint="@color/hijau"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -79,6 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Logout"
+               android:backgroundTint="@color/maroon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.309"
