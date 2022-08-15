@@ -90,6 +90,9 @@ public class Detailjobfreelancer extends AppCompatActivity {
                     sembunyikanDialog();
                     if(response.isSuccessful()){
                         if(response.body() != null){
+                            Intent intent = new Intent(Detailjobfreelancer.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
                             pesan("Anda telah melakukan penawaran, silahkan ditunggu untuk di validasi oleh Pemilik Pekerjaan!");
                         }
                     }

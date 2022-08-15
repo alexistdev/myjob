@@ -41,7 +41,6 @@ public class Daftar extends AppCompatActivity {
             String password = mPassword.getText().toString();
             String tipe = mySpinner.getSelectedItem().toString();
             if (email.trim().length() > 0 && password.trim().length() > 0 && nama.trim().length() > 0 && tipe.trim().length() > 0) {
-
                 if(tipe.equals("Job Seeker")){
                     simpanData(email,nama,password,"2");
                 } else {

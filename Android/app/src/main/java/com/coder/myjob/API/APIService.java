@@ -28,6 +28,15 @@ import retrofit2.http.Query;
 public interface APIService {
 
     /** API untuk freelance */
+    /* Update Akun Freelancer*/
+    @FormUrlEncoded
+    @POST("api/freelancer/akun")
+    Call<AkunModel> updateAkun(@Field("user_id") String userId,
+                               @Field("name") String namaPengguna,
+                               @Field("email") String emailPengguna,
+                               @Field("password") String passwordPengguna,
+                               @Field("phone") String phonePengguna);
+
     /* Aplied Job*/
     @FormUrlEncoded
     @POST("api/freelancer/job")

@@ -46,6 +46,7 @@ class AkunController extends Controller
         $rules = [
             'user_id' => 'required|numeric',
             'name' => 'required|max:255',
+            'phone' => 'required|max:255',
             'password' => 'nullable|max:255',
             'email' => [
                 'required',
@@ -72,12 +73,14 @@ class AkunController extends Controller
                     User::where('id',$user->id)->update([
                         'name' => $request->name,
                         'email' => $request->email,
+                        'phone' => $request->phone,
                         'password' => Hash::make($request->password),
                     ]);
                 } else {
                     User::where('id',$user->id)->update([
                         'name' => $request->name,
                         'email' => $request->email,
+                        'phone' => $request->phone,
                     ]);
                 }
                 return response()->json([
