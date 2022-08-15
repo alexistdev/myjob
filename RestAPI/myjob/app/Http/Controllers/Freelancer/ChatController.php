@@ -27,17 +27,25 @@ class ChatController extends Controller
         } else {
             $chat = Chat::where('job_id',$request->job_id)->first();
             if($chat !== null){
-                $balas = Balas::where('chat_id',$chat->id)->get();
+                $balas = Balas::with('user')->where('chat_id',$chat->id)->get();
                 if($balas->isEmpty()){
                     return response()->json([
                         'status' => false,
                         'message' => "data kosong",
                     ], 404);
                 } else {
+                    $datax =collect();
+                    foreach($balas as $row){
+                        $x['id'] = $row->id;
+                        $x['nama_pengguna'] = $row->user->name;
+                        $x['pesan'] = $row->pesan;
+                        $datax->push($x);
+                    }
                     return response()->json([
                         'status' => true,
+                        'chatID' => $chat->id,
                         'message' => "data berhasil didapatkan",
-                        'result' => $balas,
+                        'result' => $datax,
                     ], 200);
                 }
             }else{
@@ -48,5 +56,13 @@ class ChatController extends Controller
             }
 
         }
+    }
+
+    public function kirimPesan(Request $request){
+        $rules = [
+            'user_id' => 'required|numeric',
+            'chat_id' => 'required|numeric',
+        ];
+
     }
 }

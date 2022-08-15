@@ -18,9 +18,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".DaftarBidder"
-            android:parentActivityName=".DashboardSeeker"
+            android:name=".Detailchat"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".DaftarBidder"
+            android:exported="false"
+            android:parentActivityName=".DashboardSeeker" />
         <activity
             android:name=".TambahJob"
             android:exported="false"

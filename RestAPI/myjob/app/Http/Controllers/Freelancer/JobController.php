@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Freelancer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Balas;
 use App\Models\Bidding;
+use App\Models\Chat;
 use App\Models\Job;
 use App\Models\Kategori;
 use App\Models\User;
@@ -255,11 +257,28 @@ class JobController extends Controller
                 if($job != null){
                     $bidding = Bidding::where('user_id',$request->user_id)->where('job_id',$request->job_id)->first();
                     if($bidding != null){
-                        return response()->json([
-                            'status' => true,
-                            'message' => "Sudah Bid!",
-                            'status_bid' => "1",
-                        ], 200);
+                        if($job->bidder !== null){
+                            if($bidding->bidder == $job->bidder){
+                                return response()->json([
+                                    'status' => true,
+                                    'message' => "Sudah Bid!",
+                                    'status_bid' => "3",
+                                ], 200);
+                            } else {
+                                return response()->json([
+                                    'status' => true,
+                                    'message' => "Sudah Bid!",
+                                    'status_bid' => "1",
+                                ], 200);
+                            }
+                        } else{
+                            return response()->json([
+                                'status' => true,
+                                'message' => "Sudah Bid!",
+                                'status_bid' => "1",
+                            ], 200);
+                        }
+
                     } else {
                         return response()->json([
                             'status' => true,

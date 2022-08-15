@@ -27,6 +27,7 @@ Route::get('/freelancer/job', [JobFree::class, 'getJob'])->name('api.freelancer.
 /** untuk akun freelancer */
 Route::get('/freelancer/akun', [Akun::class, 'getAkun'])->name('api.freelancer.akun');
 Route::get('/freelancer/chat', [Chat::class, 'getChatFreelancer'])->name('api.freelancer.chat');
+Route::post('/freelancer/chat', [Chat::class, 'kirimPesan'])->name('api.freelancer.sentchat');
 
 Route::post('/freelancer/akun', [Akun::class, 'simpanAkun'])->name('api.freelancer.saveakun');
 Route::post('/freelancer/job', [JobFree::class, 'jobApplied'])->name('api.freelancer.applied');

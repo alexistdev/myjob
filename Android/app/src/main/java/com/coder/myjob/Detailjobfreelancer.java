@@ -25,7 +25,7 @@ import retrofit2.Response;
 import retrofit2.internal.EverythingIsNonNull;
 
 public class Detailjobfreelancer extends AppCompatActivity {
-    private Button mAplied,mBidder;
+    private Button mAplied,mBidder,mChat;
     private TextView mJudul,mDeadline,mFee,mDeskripsi,mNamaBidder;
     private ProgressDialog pDialog;
 
@@ -76,6 +76,15 @@ public class Detailjobfreelancer extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             });
+            mChat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Detailjobfreelancer.this, Detailchat.class);
+                    intent.putExtra("idjob", idJob);
+                    startActivity(intent);
+                    finish();
+                }
+            });
         }
     }
 
@@ -90,7 +99,7 @@ public class Detailjobfreelancer extends AppCompatActivity {
                     sembunyikanDialog();
                     if(response.isSuccessful()){
                         if(response.body() != null){
-                            Intent intent = new Intent(Detailjobfreelancer.this, MainActivity.class);
+                            Intent intent = new Intent(Detailjobfreelancer.this, DashboardFreelancer.class);
                             startActivity(intent);
                             finish();
                             pesan("Anda telah melakukan penawaran, silahkan ditunggu untuk di validasi oleh Pemilik Pekerjaan!");
@@ -128,7 +137,11 @@ public class Detailjobfreelancer extends AppCompatActivity {
                             if(statusJob.equals("1")){
                                 mAplied.setVisibility(View.INVISIBLE);
                                 pesan("Anda sudah pernah melakukan penawaran!");
-                            } else{
+                            } else if(statusJob.equals("3")){
+                                mAplied.setVisibility(View.INVISIBLE);
+                                mChat.setVisibility(View.VISIBLE);
+                                pesan("anda adalah pekerjannya!");
+                            } else {
                                 mAplied.setVisibility(View.VISIBLE);
                             }
                         }
@@ -154,6 +167,7 @@ public class Detailjobfreelancer extends AppCompatActivity {
 
     private void dataInit(){
         mAplied = findViewById(R.id.btn_applied);
+        mChat = findViewById(R.id.btn_chat);
         mJudul = findViewById(R.id.text_judul);
         mDeadline = findViewById(R.id.txt_deadline);
         mFee = findViewById(R.id.txt_fee);

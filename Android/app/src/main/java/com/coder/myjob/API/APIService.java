@@ -5,8 +5,10 @@ import android.content.Context;
 import com.coder.myjob.BuildConfig;
 import com.coder.myjob.config.Constants;
 import com.coder.myjob.model.AkunModel;
+import com.coder.myjob.model.BalasModel;
 import com.coder.myjob.model.JobModel;
 import com.coder.myjob.model.LoginModel;
+import com.coder.myjob.response.GetBalas;
 import com.coder.myjob.response.GetBidder;
 import com.coder.myjob.response.GetJob;
 import com.coder.myjob.response.ResponseKategori;
@@ -28,6 +30,11 @@ import retrofit2.http.Query;
 public interface APIService {
 
     /** API untuk freelance */
+
+    /* API untuk detail chat freelancer */
+    @GET("api/freelancer/chat")
+    Call<GetBalas> getDetailBalas(@Query("job_id") String jobId);
+
     /* Update Akun Freelancer*/
     @FormUrlEncoded
     @POST("api/freelancer/akun")
