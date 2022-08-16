@@ -23,7 +23,7 @@ class AkunController extends Controller
                 'message' => "data tidak lengkap",
             ], 404);
         } else {
-            $user= User::where('id',$request->user_id)->where('role_id',2)->first();
+            $user= User::where('id',$request->user_id)->where('role_id',"!=",1)->first();
             if($user !== null){
                 return response()->json([
                     'status' => true,
@@ -67,7 +67,7 @@ class AkunController extends Controller
                 'message' => "data tidak lengkap ".$str,
             ], 404);
         } else {
-            $user= User::where('id',$request->user_id)->where('role_id',2)->first();
+            $user= User::where('id',$request->user_id)->where('role_id',"!=",1)->first();
             if($user !== null){
                 if($request->password !== null){
                     User::where('id',$user->id)->update([

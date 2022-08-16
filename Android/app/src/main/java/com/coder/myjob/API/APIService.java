@@ -30,6 +30,12 @@ import retrofit2.http.Query;
 public interface APIService {
 
     /** API untuk freelance */
+    /* API untuk kirim chat freelancer */
+    @FormUrlEncoded
+    @POST("api/freelancer/chat")
+    Call<BalasModel> balasPesan(@Field("user_id") String userId,
+                                @Field("job_id") String jobId,
+                                @Field("pesan") String pesan);
 
     /* API untuk detail chat freelancer */
     @GET("api/freelancer/chat")
