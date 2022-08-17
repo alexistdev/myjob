@@ -33,7 +33,10 @@ Route::post('/freelancer/akun', [Akun::class, 'simpanAkun'])->name('api.freelanc
 Route::post('/freelancer/job', [JobFree::class, 'jobApplied'])->name('api.freelancer.applied');
 Route::get('/freelancer/job/cek', [JobFree::class, 'cekStatusJobFreelancer'])->name('api.freelancer.cek');
 
+/** untuk akun seeker */
 Route::get('/seeker/job', [JobFree::class, 'myJob'])->name('api.seeker.job');
+Route::get('/seeker/chat', [Chat::class, 'getSeekerChat'])->name('api.seeker.chat');
+
 Route::post('/seeker/job', [JobFree::class, 'tambahJob'])->name('api.seeker.savejob');
 Route::get('/kategori', [Spinn::class, 'getKategori'])->name('api.kategori');
 Route::get('/bidder', [Bidd::class, 'getDataBidder'])->name('api.bidder');

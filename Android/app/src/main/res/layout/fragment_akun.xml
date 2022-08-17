@@ -22,7 +22,7 @@
             android:layout_marginStart="12sp"
             android:layout_marginEnd="12sp"
             android:minHeight="48dp"
-            android:text="Fajar Nugroho" />
+            android:hint="Nama Lengkap"/>
 
         <EditText
             android:id="@+id/txt_email"
@@ -32,7 +32,7 @@
             android:layout_marginStart="12sp"
             android:layout_marginEnd="12sp"
             android:minHeight="48dp"
-            android:text="freelancer@gmail.com" />
+            android:hint="Email"/>
 
         <EditText
             android:id="@+id/txt_phone"
@@ -42,7 +42,7 @@
             android:layout_marginStart="12sp"
             android:layout_marginEnd="12sp"
             android:minHeight="48dp"
-            android:text="0812456789" />
+            android:hint="Phone" />
 
         <EditText
             android:id="@+id/txt_password"

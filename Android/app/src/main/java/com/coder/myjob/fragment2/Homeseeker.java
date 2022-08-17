@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class Homeseeker extends Fragment {
     private RecyclerView gridJob;
-    private ProgressDialog pDialog;
+    private static final String TAG = "PESAN";
     private Context mContext;
     private JobAdapter jobAdapter;
     private List<JobModel> daftarJob;
@@ -71,13 +72,12 @@ public class Homeseeker extends Fragment {
 
     public void setData(Context mContext,String idUser, String token) {
         try {
-            tampilkanDialog();
             Call<GetJob> call= APIService.Factory.create(mContext).dapatseekerjob(idUser,token);
             call.enqueue(new Callback<GetJob>() {
                 @EverythingIsNonNull
                 @Override
                 public void onResponse(Call<GetJob> call, Response<GetJob> response) {
-                    sembunyikanDialog();
+
                     if(response.isSuccessful()){
                         if(response.body() != null){
                             daftarJob = response.body().getListJob();
@@ -89,36 +89,17 @@ public class Homeseeker extends Fragment {
                 @EverythingIsNonNull
                 @Override
                 public void onFailure(Call<GetJob> call, Throwable t) {
-                    sembunyikanDialog();
-                    if(t instanceof NoConnectivityException) {
-                        pesan("Offline, cek koneksi internet anda!");
-                    }
+                    Log.i(TAG,t.getMessage());
                 }
             });
         } catch (Exception e){
-            sembunyikanDialog();
             e.printStackTrace();
             pesan(e.getMessage());
         }
     }
 
-    private void tampilkanDialog(){
-        if(!pDialog.isShowing()){
-            pDialog.show();
-        }
-    }
-
-    private void sembunyikanDialog(){
-        if(pDialog.isShowing()){
-            pDialog.dismiss();
-        }
-    }
-
     private void dataInit(View mview){
         gridJob = mview.findViewById(R.id.rcJob);
-        pDialog = new ProgressDialog(getContext());
-        pDialog.setCancelable(false);
-        pDialog.setMessage("Loading.....");
         mTambah = mview.findViewById(R.id.btn_tambah);
     }
 

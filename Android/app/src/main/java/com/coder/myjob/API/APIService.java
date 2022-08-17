@@ -10,6 +10,7 @@ import com.coder.myjob.model.JobModel;
 import com.coder.myjob.model.LoginModel;
 import com.coder.myjob.response.GetBalas;
 import com.coder.myjob.response.GetBidder;
+import com.coder.myjob.response.GetChat;
 import com.coder.myjob.response.GetJob;
 import com.coder.myjob.response.ResponseKategori;
 
@@ -28,6 +29,11 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface APIService {
+    /** API untuk Seeker */
+    /* API untuk mendapatkan list chat*/
+    @GET("api/seeker/chat")
+    Call<GetChat> dataChatSeeker(@Query("user_id") String userId);
+
 
     /** API untuk freelance */
     /* API untuk kirim chat freelancer */
@@ -116,7 +122,7 @@ public interface APIService {
 //            }else {
 //                logging.setLevel(HttpLoggingInterceptor.Level.NONE);
 //            }
-
+//
 //            OkHttpClient client = builder.addInterceptor(logging).build();
             OkHttpClient client = builder.build();
             Retrofit retrofit = new Retrofit.Builder()

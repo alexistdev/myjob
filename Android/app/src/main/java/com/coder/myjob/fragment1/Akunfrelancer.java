@@ -106,9 +106,9 @@ public class Akunfrelancer extends Fragment {
                @Override
                public void onFailure(Call<AkunModel> call, Throwable t) {
                    sembunyikanDialog();
-                   if(t instanceof NoConnectivityException) {
-                       pesan("Offline, cek koneksi internet anda!");
-                   }
+//                   if(t instanceof NoConnectivityException) {
+//                       pesan("Offline, cek koneksi internet anda!");
+//                   }
                }
            });
         } catch (Exception e){

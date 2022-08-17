@@ -80,9 +80,9 @@ public class Homefrelancer extends Fragment {
                 @Override
                 public void onFailure(Call<GetJob> call, Throwable t) {
                     sembunyikanDialog();
-                    if(t instanceof NoConnectivityException) {
-                        pesan("Offline, cek koneksi internet anda!");
-                    }
+//                    if(t instanceof NoConnectivityException) {
+//                        pesan("Offline, cek koneksi internet anda!");
+//                    }
                 }
             });
         } catch (Exception e){

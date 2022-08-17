@@ -62,4 +62,9 @@ class User extends Authenticatable
         return $this->hasOne(Skillpengguna::class,'user_id',"id")->with('tag');
     }
 
+    public function chats()
+    {
+        return $this->hasManyThrough(Chat::class, Job::class)->with(['jobrelated','user']);
+    }
+
 }
