@@ -42,9 +42,9 @@ public class Daftar extends AppCompatActivity {
             String tipe = mySpinner.getSelectedItem().toString();
             if (email.trim().length() > 0 && password.trim().length() > 0 && nama.trim().length() > 0 && tipe.trim().length() > 0) {
                 if(tipe.equals("Job Seeker")){
-                    simpanData(email,nama,password,"2");
+                    simpanData(email,password,nama,"2");
                 } else {
-                    simpanData(email,nama,password,"3");
+                    simpanData(email,password,nama,"3");
                 }
             } else{
                 pesan("Semua kolom harus diisi!");

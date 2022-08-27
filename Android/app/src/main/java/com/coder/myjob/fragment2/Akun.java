@@ -38,56 +38,56 @@ public class Akun extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View mview =  inflater.inflate(R.layout.fragment_akun, container, false);
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences(
                 Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
         String idUser = sharedPreferences.getString("idUser", "");
+
         dataInit(mview);
         setData(idUser);
-        mLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SessionHandle.logout(requireContext());
-                Intent intent = new Intent(getActivity(), Login.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                if(getActivity()!= null){
-                    getActivity().finish();
-                }
+
+        mLogout.setOnClickListener(view -> {
+            SessionHandle.logout(requireContext());
+            Intent intent = new Intent(getActivity(), Login.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            if(getActivity()!= null){
+                getActivity().finish();
             }
         });
-        mSimpan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nama = mNama.getText().toString();
-                String email = mEmail.getText().toString();
-                String phone = mPhone.getText().toString();
-                String password = mPassword.getText().toString();
-                if (nama.trim().length() > 0 && email.trim().length() > 0 && phone.trim().length() > 0) {
-                    if (cekEmail(email)) {
-                        updateAkun(idUser,nama,email,password,phone);
-                    } else {
-                        pesan("Masukkan email yang valid !");
-                    }
+
+        mSimpan.setOnClickListener(v -> {
+            String nama = mNama.getText().toString();
+            String email = mEmail.getText().toString();
+            String phone = mPhone.getText().toString();
+            String password = mPassword.getText().toString();
+            if (nama.trim().length() > 0 && email.trim().length() > 0 && phone.trim().length() > 0) {
+                if (cekEmail(email)) {
+                    updateAkun(idUser,nama,email,password,phone);
                 } else {
-                    pesan("Semua kolom harus diisi!");
+                    pesan("Masukkan email yang valid !");
                 }
+            } else {
+                pesan("Semua kolom harus diisi!");
             }
         });
+
         return mview;
     }
 
     private void updateAkun(String idUser, String namaPengguna, String emailPengguna, String Password,String phonePengguna)
     {
-
-        tampilkanDialog();
+//        tampilkanDialog();
         try{
             Call<AkunModel> call=APIService.Factory.create(getContext()).updateAkun(idUser,namaPengguna,emailPengguna,Password,phonePengguna);
             call.enqueue(new Callback<AkunModel>() {
+
                 @EverythingIsNonNull
                 @Override
                 public void onResponse(Call<AkunModel> call, Response<AkunModel> response) {
+//                    sembunyikanDialog();
                     if(response.isSuccessful()) {
                         if (response.body() != null) {
                             setData(idUser);
@@ -98,14 +98,11 @@ public class Akun extends Fragment {
                 @EverythingIsNonNull
                 @Override
                 public void onFailure(Call<AkunModel> call, Throwable t) {
-                    sembunyikanDialog();
-//                    if(t instanceof NoConnectivityException) {
-//                        pesan("Offline, cek koneksi internet anda!");
-//                    }
+//                    sembunyikanDialog();
                 }
             });
         } catch (Exception e){
-            sembunyikanDialog();
+//            sembunyikanDialog();
             e.printStackTrace();
             pesan(e.getMessage());
         }

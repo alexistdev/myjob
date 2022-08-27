@@ -70,6 +70,7 @@ class AkunController extends Controller
             $user= User::where('id',$request->user_id)->where('role_id',"!=",1)->first();
             if($user !== null){
                 if($request->password !== null){
+
                     User::where('id',$user->id)->update([
                         'name' => $request->name,
                         'email' => $request->email,
@@ -94,6 +95,5 @@ class AkunController extends Controller
                 ], 404);
             }
         }
-
     }
 }

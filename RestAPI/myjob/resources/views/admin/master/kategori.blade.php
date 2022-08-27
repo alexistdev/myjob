@@ -6,8 +6,7 @@
                     <div class="card-header bg-transparent">
                         <div class="d-flex align-items-center">
                             <div>
-                                <h6 class="mb-0">Master Data User</h6>
-
+                                <h6 class="mb-0">Master Data Kategori</h6>
                             </div>
                         </div>
                         <button class="btn btn-sm btn-primary float-end">TAMBAH</button>
