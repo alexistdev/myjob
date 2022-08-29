@@ -30,10 +30,15 @@ import retrofit2.http.Query;
 
 public interface APIService {
     /** API untuk Seeker */
+
+    /* Approve bidder*/
+    @FormUrlEncoded
+    @POST("api/bidder")
+    Call<AkunModel> approveBidder(@Field("bidder_id") String bidderId);
+
     /* API untuk mendapatkan list chat*/
     @GET("api/seeker/chat")
     Call<GetChat> dataChatSeeker(@Query("user_id") String userId);
-
 
     /** API untuk freelance */
     /* API untuk kirim chat freelancer */
@@ -65,15 +70,14 @@ public interface APIService {
     @GET("api/freelancer/akun")
     Call<AkunModel> getDataAkun(@Query("user_id") String UserId);
 
-
     //API untuk daftar
     @FormUrlEncoded
     @POST("api/daftar")
     Call<LoginModel> daftarUser(@Field("email") String email,
                                 @Field("password") String password,
                                 @Field("name") String name,
-                                @Field("tipe") String tipe);
-
+                                @Field("tipe") String tipe,
+                                @Field("kategori") String kategori);
 
     @GET("api/bidder")
     Call<GetBidder> dataBidder(@Query("job_id") String jobId);

@@ -1,5 +1,6 @@
 package com.coder.myjob.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,11 @@ import java.util.List;
 
 public class BidderAdapter extends RecyclerView.Adapter<BidderAdapter.MyBidderHolder> {
     List<BidderModel> mBidderList;
+    public BidderAdapter.ClickListener clicklistener;
 
-    public BidderAdapter(List<BidderModel> mBidderList) {
+    public BidderAdapter(List<BidderModel> mBidderList, ClickListener clickListener) {
         this.mBidderList = mBidderList;
+        this.clicklistener = clickListener;
     }
 
     @NonNull
@@ -33,7 +36,7 @@ public class BidderAdapter extends RecyclerView.Adapter<BidderAdapter.MyBidderHo
 
     public static class MyBidderHolder extends RecyclerView.ViewHolder {
         private final TextView mNama,mEmail;
-        private Button mApprove;
+        private final Button mApprove;
 
         MyBidderHolder(@NonNull View itemView) {
             super(itemView);
@@ -44,10 +47,17 @@ public class BidderAdapter extends RecyclerView.Adapter<BidderAdapter.MyBidderHo
     }
 
     @Override
-    public void onBindViewHolder (@NonNull MyBidderHolder holder,final int position){
+    public void onBindViewHolder (@NonNull MyBidderHolder holder, @SuppressLint("RecyclerView") final int position){
         holder.mNama.setText(mBidderList.get(position).getNamaUser());
         holder.mEmail.setText(mBidderList.get(position).getEmailUser());
+        holder.mApprove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicklistener.dataBidder(mBidderList.get(position).getIdBidder());
+            }
+        });
     }
+
 
     @Override
     public int getItemCount () {
@@ -57,6 +67,10 @@ public class BidderAdapter extends RecyclerView.Adapter<BidderAdapter.MyBidderHo
     public void replaceData(List<BidderModel> bidderModels) {
         this.mBidderList = bidderModels;
         notifyDataSetChanged();
+    }
+
+    public interface ClickListener{
+        void dataBidder(String idBidder);
     }
 
 }

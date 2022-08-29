@@ -61,7 +61,6 @@ class LoginController extends Controller
         }
     }
 
-
     public function daftar(Request $request)
     {
         $rules = [
@@ -69,6 +68,7 @@ class LoginController extends Controller
             'name' => 'required|max:255',
             'password' => 'required|max:255',
             'tipe' => 'required|numeric',
+            'kategori' =>  'required|numeric',
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
@@ -89,10 +89,9 @@ class LoginController extends Controller
             if($request->tipe == 2){
                 $skill = new Skillpengguna();
                 $skill->user_id = $idUser;
-                $skill->kategori_id = 1;
+                $skill->kategori_id = $request->kategori;
                 $skill->save();
             }
-
 
             return response()->json([
                 'status' => true,

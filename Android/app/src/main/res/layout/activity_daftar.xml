@@ -86,6 +86,7 @@
                 android:tooltipText="Tipe" />
 
             <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_skill"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12sp"

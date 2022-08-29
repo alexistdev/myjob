@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.coder.myjob.API.APIService;
 import com.coder.myjob.API.NoConnectivityException;
 import com.coder.myjob.adapter.BidderAdapter;
+import com.coder.myjob.model.AkunModel;
 import com.coder.myjob.model.BidderModel;
 import com.coder.myjob.response.GetBidder;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.internal.EverythingIsNonNull;
 
-public class DaftarBidder extends AppCompatActivity {
+public class DaftarBidder extends AppCompatActivity implements BidderAdapter.ClickListener {
     private RecyclerView gridBidder;
     private BidderAdapter bidderAdapter;
     private List<BidderModel> daftarBidder;
@@ -74,6 +75,35 @@ public class DaftarBidder extends AppCompatActivity {
         }
     }
 
+    private void approval(String idBidder){
+        try{
+
+            Call<AkunModel> call=APIService.Factory.create(getApplicationContext()).approveBidder(idBidder);
+            call.enqueue(new Callback<AkunModel>() {
+                @EverythingIsNonNull
+                @Override
+                public void onResponse(Call<AkunModel> call, Response<AkunModel> response) {
+                    if(response.isSuccessful()) {
+                        pesan("Anda berhasil memilih pekerja untuk project Anda");
+                        Intent intent = new Intent(DaftarBidder.this, DashboardSeeker.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+                @EverythingIsNonNull
+                @Override
+                public void onFailure(Call<AkunModel> call, Throwable t) {
+                    pesan(t.getMessage());
+                }
+            });
+        }catch (Exception e){
+
+            e.printStackTrace();
+            pesan(e.getMessage());
+        }
+    }
+
+
     private void dataInit(){
         gridBidder = findViewById(R.id.rcJob);
     }
@@ -81,7 +111,7 @@ public class DaftarBidder extends AppCompatActivity {
 
     private void setupRecyclerView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
-        bidderAdapter = new BidderAdapter(new ArrayList<>());
+        bidderAdapter = new BidderAdapter(new ArrayList<>(),this);
         gridBidder.setLayoutManager(linearLayoutManager);
         gridBidder.setAdapter(bidderAdapter);
     }
@@ -90,5 +120,12 @@ public class DaftarBidder extends AppCompatActivity {
     public void pesan(String msg)
     {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+    }
+
+
+
+    @Override
+    public void dataBidder(String idBidder) {
+        approval(idBidder);
     }
 }

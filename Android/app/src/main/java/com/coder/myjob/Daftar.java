@@ -29,6 +29,7 @@ public class Daftar extends AppCompatActivity {
         setContentView(R.layout.activity_daftar);
         init();
         Spinner mySpinner = (Spinner) findViewById(R.id.tipe);
+        Spinner mySkill = (Spinner) findViewById(R.id.spinner_skill);
 
         mLogin.setOnClickListener(view -> {
             Intent intent = new Intent(Daftar.this, Login.class);
@@ -40,11 +41,28 @@ public class Daftar extends AppCompatActivity {
             String nama = mNama.getText().toString();
             String password = mPassword.getText().toString();
             String tipe = mySpinner.getSelectedItem().toString();
+            String skill = mySkill.getSelectedItem().toString();
+
             if (email.trim().length() > 0 && password.trim().length() > 0 && nama.trim().length() > 0 && tipe.trim().length() > 0) {
+                String skillz ="1";
+                if(skill.equals("Graphic Designer")){
+                    skillz = "1";
+                }else if(skill.equals("Video Editor")){
+                    skillz = "2";
+                }else if(skill.equals("Motion Designer")){
+                    skillz = "3";
+                }else if(skill.equals("Photo Product")){
+                    skillz = "4";
+                }else if(skill.equals("Programmer")){
+                    skillz = "5";
+                } else{
+                    skillz = "1";
+                }
+
                 if(tipe.equals("Job Seeker")){
-                    simpanData(email,password,nama,"2");
+                    simpanData(email,password,nama,"2",skillz);
                 } else {
-                    simpanData(email,password,nama,"3");
+                    simpanData(email,password,nama,"3",skillz);
                 }
             } else{
                 pesan("Semua kolom harus diisi!");
@@ -53,10 +71,10 @@ public class Daftar extends AppCompatActivity {
 
     }
 
-    private void simpanData(String email, String password, String nama, String tipe) {
+    private void simpanData(String email, String password, String nama, String tipe,String kategori) {
         try{
             tampilkanDialog();
-            Call<LoginModel> call = APIService.Factory.create(getApplicationContext()).daftarUser(email,password,nama,tipe);
+            Call<LoginModel> call = APIService.Factory.create(getApplicationContext()).daftarUser(email,password,nama,tipe,kategori);
             call.enqueue(new Callback<LoginModel>() {
                 @EverythingIsNonNull
                 @Override
@@ -65,7 +83,7 @@ public class Daftar extends AppCompatActivity {
                     if(response.isSuccessful()) {
                         if (response.body() != null) {
                             pesan("sudah mendaftar");
-                            Intent intent = new Intent(Daftar.this, Login.class);
+                            Intent intent = new Intent(Daftar.this, Splash2Activity.class);
                             startActivity(intent);
                             finish();
                         }
