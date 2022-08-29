@@ -33,7 +33,7 @@ public class Login extends AppCompatActivity {
     private ImageView btnLogin;
     private EditText mEmail, mPassword;
     private ProgressDialog pDialog;
-    private TextView btnDaftar;
+    private TextView btnDaftar,mJudul;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,12 @@ public class Login extends AppCompatActivity {
 
         }
         init();
+        Intent iin= getIntent();
+        Bundle extra = iin.getExtras();
+        if(extra != null) {
+            String nama = extra.getString("nama","");
+            mJudul.setText("Anda Login sebagai : "+ nama);
+        }
         btnLogin.setOnClickListener(v -> {
             String email = mEmail.getText().toString();
             String password = mPassword.getText().toString();
@@ -131,6 +137,7 @@ public class Login extends AppCompatActivity {
 
     public void init() {
         btnLogin = findViewById(R.id.btnLogin);
+        mJudul = findViewById(R.id.text_judul);
         btnDaftar = findViewById(R.id.btn_daftar);
         mEmail = findViewById(R.id.txt_email);
         mPassword = findViewById(R.id.txt_password);

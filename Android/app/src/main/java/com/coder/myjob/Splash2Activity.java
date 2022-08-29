@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.coder.myjob.config.Constants;
 import com.coder.myjob.utils.SessionHandle;
@@ -15,6 +17,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Splash2Activity extends AppCompatActivity {
+    private Button mFreelancer,mJobOwner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +43,30 @@ public class Splash2Activity extends AppCompatActivity {
             }
 
         }
-
-        int timeout = 3000;
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-
+        init();
+        mFreelancer.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Splash2Activity.this, Login.class);
+                intent.putExtra("nama","Freelancer");
+                startActivity(intent);
                 finish();
-                Intent homepage = new Intent(Splash2Activity.this, Login.class);
-                startActivity(homepage);
             }
-        }, timeout);
+        });
+        mJobOwner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Splash2Activity.this, Login.class);
+                intent.putExtra("nama","Job Owner");
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    public void init() {
+        mFreelancer = findViewById(R.id.btn_login1);
+        mJobOwner = findViewById(R.id.btn_login2);
+
     }
 }
