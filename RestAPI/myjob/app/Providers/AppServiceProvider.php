@@ -2,15 +2,18 @@
 
 namespace App\Providers;
 
+
+use App\Service\UserService;
+use App\Service\UserServiceImpl;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
+
+    public $bindings = [
+        UserService::class => UserServiceImpl::class
+    ];
+
     public function register()
     {
         //
