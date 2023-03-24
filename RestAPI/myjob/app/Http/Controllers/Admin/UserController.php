@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kota;
 use App\Models\Provinsi;
 use App\Models\User;
+use App\Service\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
@@ -13,13 +14,15 @@ use Yajra\DataTables\DataTables;
 class UserController extends Controller
 {
     protected $users;
+    protected UserService $userService;
 
-    public function __construct()
+    public function __construct(UserService $q)
     {
         $this->middleware(function ($request, $next) {
             $this->users = Auth::user();
             return $next($request);
         });
+        $this->userService = $q;
     }
 
     public function index(Request $request)
